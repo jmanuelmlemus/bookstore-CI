@@ -20,3 +20,10 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
+    environment:
+      DATABASE_URL: "postgresql+asyncpg://fastapi_user:secret_password@db/fastapi_db"
+    command: ["pytest","test/"]
+
+networks:
+  fastapi-net:
+    driver: bridge

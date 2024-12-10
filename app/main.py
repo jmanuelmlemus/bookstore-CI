@@ -1,11 +1,15 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select  # Import select here
-from app.database import get_db
+from app.database import get_db, init_db
 from app.models import Book
 from app.schemas import BookCreate, BookResponse
 
 app = FastAPI()
+
+@app.on_event('startup')
+async def on_startup():
+    await init_db()
 
 @app.post("/books/", response_model=BookResponse)
 async def create_book(book: BookCreate, db: AsyncSession = Depends(get_db)):
