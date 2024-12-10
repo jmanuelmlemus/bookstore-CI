@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+asyncpg
+pytest
+pytest-asyncio
+<<<<<<< HEAD
+httpxcl
+=======
+httpx
+>>>>>>> 2406ca7 (first commit)
